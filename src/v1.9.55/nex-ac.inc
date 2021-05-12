@@ -1113,7 +1113,7 @@ ac_fpublic ac_CreatePickup(pickupid, modelid, type, Float:ac_X, Float:ac_Y, Floa
 #endif
 
 #if defined GetPlayerVersion
-	stock ac_GetPlayerVersion(playerid, const version[], len)
+	stock ac_GetPlayerVersion(playerid, version[], len)
 	{
 		new ac_ret = GetPlayerVersion(playerid, version, len);
 		for(new ac_i = ac_ret - 1; ac_i >= 0; --ac_i)
@@ -4040,12 +4040,12 @@ public OnDialogResponse(playerid, dialogid, response, listitem, const inputtext[
 #endif
 #define OnDialogResponse ac_fs_OnDialogResponse
 #if defined ac_fs_OnDialogResponse
-	forward ac_fs_OnDialogResponse(playerid, dialogid, response, listitem, const inputtext[]);
+	forward ac_fs_OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 #endif
 
 #else
 
-public OnDialogResponse(playerid, dialogid, response, listitem, const inputtext[])
+public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 {
 	if(ACInfo[playerid][acKicked] > 0) return 1;
 	new ac_i = GetTickCount();
@@ -4086,7 +4086,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, const inputtext[
 #endif
 #define OnDialogResponse ac_OnDialogResponse
 #if defined ac_OnDialogResponse
-	forward ac_OnDialogResponse(playerid, dialogid, response, listitem, const inputtext[]);
+	forward ac_OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]);
 #endif
 
 public OnEnterExitModShop(playerid, enterexit, interiorid)
@@ -4219,7 +4219,7 @@ public OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid)
 	forward ac_OnPlayerInteriorChange(playerid, newinteriorid, oldinteriorid);
 #endif
 
-public OnRconLoginAttempt(const ip[], const password[], success)
+public OnRconLoginAttempt(ip[], password[], success)
 {
 	static ac_ipTables[MAX_PLAYERS][2], ac_ipIndex;
 	new ac_i, ac_currentIp = ac_IpToInt(ip);
@@ -5878,7 +5878,7 @@ public OnPlayerClickPlayer(playerid, clickedplayerid, source)
 	#endif
 #endif
 
-public OnPlayerCommandText(playerid, const cmdtext[])
+public OnPlayerCommandText(playerid, cmdtext[])
 {
 	if(ACInfo[playerid][acKicked] > 0) return 1;
 	#if AC_USE_NPC
@@ -7192,7 +7192,7 @@ public OnVehicleDeath(vehicleid, killerid)
 	forward ac_OnVehicleDeath(vehicleid, killerid);
 #endif
 
-public OnPlayerText(playerid, const text[])
+public OnPlayerText(playerid, text[])
 {
 	if(ACInfo[playerid][acKicked] > 0) return 0;
 	#if AC_USE_NPC
